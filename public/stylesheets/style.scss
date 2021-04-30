@@ -1,0 +1,32 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+nav {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ul {
+    display: inline-block;
+  }
+
+  li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+  }
+  a {
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    font-size: 1.8rem;
+    background-color: gray;
+    border-radius: 8px;
+  }
+  .logo {
+    height: 60px;
+    margin-left: 20px;
+  }
+}
