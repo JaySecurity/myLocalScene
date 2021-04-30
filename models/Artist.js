@@ -22,6 +22,7 @@ const artistSchema = Schema({
     required: true,
   },
   website: String,
+  photo: String,
   reviews: [reviewSchema],
   createdBy: {
     type: Schema.Types.ObjectId,

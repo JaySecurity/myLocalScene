@@ -22,6 +22,7 @@ const venueSchema = Schema({
     email: String,
   },
   website: String,
+  photo: String,
   reviews: [reviewSchema],
   createdBy: {
     type: Schema.Types.ObjectId,
