@@ -2,36 +2,36 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 function add(req, res) {
+  let { username, email, message } = req.session;
   res.render('users/register', {
     title: 'Register User',
-    message: '',
+    message,
+    username,
+    email,
   });
 }
 
 function getLogin(req, res) {
-  res.render('users/login', { title: 'Login', message: '' });
+  let message = req.session.message;
+  res.render('users/login', { title: 'Login', message });
+  req.session.message = null;
 }
 
 async function login(req, res) {
   try {
+    req.session.message = null;
     let { email, password } = req.body;
-    if (!email || !password)
-      return res.render('users/login', {
-        title: 'Login',
-        message: 'Please enter all fields',
-      });
+    if (!email || !password) return res.redirect('/users/login');
     let re = new RegExp(`^${email}$`, 'i');
     user = await User.findOne({ email: re });
-    if (!user)
-      return res.render('users/login', {
-        title: 'Login',
-        message: 'Incorrect Email or Password',
-      });
-    if (!(await bcrypt.compare(password, user.hashedPassword)))
-      return res.render('users/login', {
-        title: 'Login',
-        message: 'Incorrect Email or Password',
-      });
+    if (!user) {
+      req.session.message = 'Invalid User Name or Password';
+      return res.redirect('/users/login');
+    }
+    if (!(await bcrypt.compare(password, user.hashedPassword))) {
+      req.session.message = 'Invalid User Name or Password';
+      return res.redirect('/users/login');
+    }
     return res.cookie('user', user._id, { httpOnly: true }).redirect('/');
   } catch (err) {
     console.log(err);
@@ -40,38 +40,46 @@ async function login(req, res) {
 
 async function create(req, res) {
   try {
+    req.session.message = null;
     let { username, email, password, passwordVerify } = req.body;
+    req.session.username = username;
+    req.session.email = email;
     if (!username || !password || !email || !passwordVerify)
-      return res.render('users/register', {
-        title: 'Register User',
-        message: 'Please enter all fields',
-      });
-    if (password !== passwordVerify)
-      return res.render('users/register', {
-        title: 'Register User',
-        message: 'Passwords do not match',
-      });
+      return res.redirect('/users/register');
+    if (password !== passwordVerify) {
+      req.session.message = 'Passwords Do Not Match';
+      return res.redirect('/users/register');
+    }
     let re = new RegExp(`^${username}$`, 'i');
     let user = await User.findOne({ username: re });
-    if (user)
-      return res.render('users/register', {
-        title: 'Register User',
-        message: 'User already Exists',
-      });
+    if (user) {
+      req.session.message = 'Username Already Exists';
+      return res.redirect('/users/register');
+    }
     re = new RegExp(`^${email}$`, 'i');
     user = await User.findOne({ email: re });
-    if (user)
-      return res.render('users/register', {
-        title: 'Register User',
-        message: 'Email already Exists',
-      });
+    if (user) {
+      req.session.message = 'Email Already Exists';
+      return res.redirect('/users/register');
+    }
     let hashedPassword = await bcrypt.hash(password, 10);
     user = new User({ username, email, hashedPassword });
     await user.save();
+    req.session.username = '';
+    req.session.email = '';
     return res.redirect('/users/login');
   } catch (err) {
     console.log(err);
   }
 }
 
-module.exports = { add, create, getLogin, login };
+function logout(req, res) {
+  res
+    .cookie('user', '', {
+      httpOnly: true,
+      expires: new Date(0),
+    })
+    .redirect('/');
+}
+
+module.exports = { add, create, getLogin, login, logout };

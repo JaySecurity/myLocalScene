@@ -5,11 +5,17 @@
 <form action="/users" method="post">
   <div class="form-group">
     <label for="username">Username:</label>
-    <input type="text" name="username" id="username" required />
+    <input
+      type="text"
+      name="username"
+      id="username"
+      required
+      value="<%=username%>"
+    />
   </div>
   <div class="form-group">
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required />
+    <input type="email" name="email" id="email" required value="<%=email%>" />
   </div>
   <div class="form-group">
     <label for="password">Password:</label>
