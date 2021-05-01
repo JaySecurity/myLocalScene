@@ -30,3 +30,29 @@ nav {
     margin-left: 20px;
   }
 }
+.user-form-header {
+  text-align: center;
+}
+.msg {
+  width: 100%;
+  #user-msg {
+    text-align: center;
+    font-weight: 600;
+    font-size: larger;
+    color: red;
+  }
+}
+form {
+  margin: 0 auto;
+  width: 400px;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      display: block;
+      margin: 0.8rem 0;
+    }
+  }
+}

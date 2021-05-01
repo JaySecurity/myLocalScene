@@ -2,10 +2,6 @@
   max-width: 1200px;
   margin: 0 auto; }
 
-.logo {
-  height: 60px;
-  margin-left: 20px; }
-
 nav {
   padding: 10px;
   display: flex;
@@ -19,9 +15,33 @@ nav {
     margin: 10px 20px; }
   nav a {
     text-decoration: none;
-    padding: .5rem .75rem;
+    padding: 0.5rem 0.75rem;
     font-size: 1.8rem;
     background-color: gray;
     border-radius: 8px; }
+  nav .logo {
+    height: 60px;
+    margin-left: 20px; }
+
+.user-form-header {
+  text-align: center; }
+
+.msg {
+  width: 100%; }
+  .msg #user-msg {
+    text-align: center;
+    font-weight: 600;
+    font-size: larger;
+    color: red; }
+
+form {
+  margin: 0 auto;
+  width: 400px; }
+  form .form-group {
+    display: flex;
+    flex-direction: column; }
+    form .form-group input {
+      display: block;
+      margin: 0.8rem 0; }
 
 /*# sourceMappingURL=style.css.map */
