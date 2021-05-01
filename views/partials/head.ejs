@@ -13,7 +13,10 @@
         <li class="nav-item"><a href="/venues" class="nav-link">Venues</a></li>
         <li class="nav-item"><a href="/artists" class="nav-link">Artists</a></li>   
         <li class="nav-item"><a href="/events" class="nav-link">Events</a></li>
+        <% console.log(currentUser); if (!currentUser) {%>
         <li class="nav-item"><a href="/users/login" class="nav-link login">Login</a></li>
-        
+        <% } else { %>
+          <li class="nav-item"><a href="/users/logout" class="nav-link ">Logout</a></li>        
+        <% } %>
       </ul>
     </nav>

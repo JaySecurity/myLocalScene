@@ -34,6 +34,10 @@ app.use(
     },
   })
 );
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.user;
+  next();
+});
 app.use(
   sassMiddleware({
     src: path.join(__dirname, 'public'),

@@ -32,7 +32,8 @@ async function login(req, res) {
       req.session.message = 'Invalid User Name or Password';
       return res.redirect('/users/login');
     }
-    return res.cookie('user', user._id, { httpOnly: true }).redirect('/');
+    req.session.user = user._id;
+    return res.redirect('/');
   } catch (err) {
     console.log(err);
   }
@@ -74,12 +75,8 @@ async function create(req, res) {
 }
 
 function logout(req, res) {
-  res
-    .cookie('user', '', {
-      httpOnly: true,
-      expires: new Date(0),
-    })
-    .redirect('/');
+  req.session.user = '';
+  res.redirect('/');
 }
 
 module.exports = { add, create, getLogin, login, logout };
