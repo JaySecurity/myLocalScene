@@ -1,0 +1,17 @@
+<%- include('../partials/head.ejs')%> 
+<% if(currentUser){%>
+<div class="controls">
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/events/add" class="nav-link">Add Event</a>
+    </li>
+  </ul>
+</div>
+<% }%>
+<h1>Events</h1>
+<% if(events){ %>
+  <% events.forEach((event) =>{ %>
+    <%- include('../partials/eventCard.ejs', {event})%>
+<% }) %> 
+<% } %>
+<%-include('../partials/foot.ejs')%>

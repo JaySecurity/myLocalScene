@@ -1,0 +1,47 @@
+<%- include('../partials/head.ejs') %>
+
+<h1 class="user-form-header">Add an Event</h1>
+
+<form class="event-form" action="/events" method="post">
+  <div class="form-group">
+    <label for="name">Event Name:</label>
+    <input type="text" name="name" id="name" required />
+  </div>
+  <div class="form-group form-section">
+    <select name="venue" id="venue">
+      <option value="none" selected disabled hidden>Select a Venue</option>
+      <% venues.forEach(venue => {%>
+        <option value="<%= venue._id %>"><%= venue.name %> </option>
+      <% }) %>      
+    </select>
+    <input type="datetime-local" name="dateTime" id="dateTime">
+    <input type="text" name="coverCharge" id="coverCharge" placeholder="Cover Charge">
+  </div>
+  <div class="form-section">
+    <div class="form-group artist">
+      <select name="artist-select" id="artist-select">
+        <option value="none" selected disabled hidden>Select an Artist</option>
+        <% artists.forEach(artist => {%>
+          <option class="opts" value="<%= artist._id %>"><%= artist.name %> </option>
+        <% }) %>      
+      </select>
+      <button id="add-artist">Add Artist</button>
+      <h3>Artist</h3>
+      <ul id="artist-list">
+
+      </ul>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea name="description" id="description" cols="30" rows="5"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="photo">Poster Link:</label>
+    <input type="text" name="photo" id="photo" />
+  </div>
+  <input type="hidden" name="artists" id="artists">
+  <button type="submit">Add Event</button>
+</form>
+<script src='/javascripts/addEvent.js'></script>
+<%- include('../partials/foot.ejs') %>

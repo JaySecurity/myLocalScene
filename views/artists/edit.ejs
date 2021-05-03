@@ -13,11 +13,11 @@
   </div>
   <div class="form-group">
     <label for="category">Category:</label>
-    <select name="category" id="category" value="<%= artist.category %>">
-      <option value="Band">Band</option>
-      <option value="Comedian">Comedian</option>
-      <option value="Hypnotist">Hypnotist</option>
-      <option value="Other">Other</option>
+    <select name="category" id="category">
+      <option value="Band" <%= artist.category === 'Band' ? 'selected' : '' %> >Band</option>
+      <option value="Comedian" <%= artist.category === 'Comedian' ? 'selected' : '' %> >Comedian</option>
+      <option value="Hypnotist" <%= artist.category === 'Hypnotist' ? 'selected' : '' %> >Hypnotist</option>
+      <option value="Other" <%= artist.category === 'Other' ? 'selected' : '' %> >Other</option>
     </select>
   </div>
   <div class="form-group">
