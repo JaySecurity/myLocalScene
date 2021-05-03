@@ -12,6 +12,7 @@ require('./config/db');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const venuesRouter = require('./routes/venues');
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/venues', venuesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -64,7 +66,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { title: 'Error' });
 });
 
 module.exports = app;
