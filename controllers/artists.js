@@ -24,4 +24,24 @@ async function create(req, res) {
   }
 }
 
-module.exports = { all, add, create };
+async function edit(req, res) {
+  const artist = await Artist.findById(req.params.id);
+  if (!artist) {
+    req.session.message = 'Artist Not Found';
+    res.render('artists/edit', { title: 'Edit Artist' });
+    req.session.message = '';
+  } else {
+    res.render('artists/edit', { title: 'Edit Artist', artist });
+  }
+}
+
+async function update(req, res) {
+  try {
+    await Artist.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/artists');
+  } catch (err) {
+    res.status(500).send('Something Went Wrong');
+  }
+}
+
+module.exports = { all, add, create, edit, update };
