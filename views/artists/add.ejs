@@ -1,0 +1,37 @@
+<%- include('../partials/head.ejs') %>
+
+<h1 class="user-form-header">Add an Artist</h1>
+
+<form action="/artists" method="post">
+  <div class="form-group">
+    <label for="name">Artist Name:</label>
+    <input type="text" name="name" id="name" required />
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" cols="30" rows="5"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="category">Category:</label>
+    <select name="category" id="category">
+      <option value="Band" selected>Band</option>
+      <option value="Comedian">Comedian</option>
+      <option value="Hypnotist">Hypnotist</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="genre">Genre:</label>
+    <input type="text" name="genre" id="genre" required placeholder="Rock, Country, Adult Humor, etc."/>
+  </div> 
+  <div class="form-group">
+    <label for="website">Website:</label>
+    <input type="text" name="website" id="website" />
+  </div>
+  <div class="form-group">
+    <label for="photo">Photo Link:</label>
+    <input type="text" name="photo" id="photo" />
+  </div>
+  <button type="submit">Add Artist</button>
+</form>
+<%- include('../partials/foot.ejs') %>

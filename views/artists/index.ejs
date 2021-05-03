@@ -1,0 +1,17 @@
+<%- include('../partials/head.ejs')%> 
+<% if(currentUser){%>
+<div class="controls">
+  <ul class="nav-list">
+    <li class="nav-item">
+      <a href="/artists/add" class="nav-link">Add Artist</a>
+    </li>
+  </ul>
+</div>
+<% }%>
+<h1>Artists</h1>
+<% if(artists){ %>
+  <% artists.forEach((artist) =>{ %>
+    <%- include('../partials/artistCard.ejs', {artist})%>
+<% }) %> 
+<% } %>
+<%-include('../partials/foot.ejs')%>

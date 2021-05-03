@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
@@ -13,6 +14,7 @@ require('./config/db');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const venuesRouter = require('./routes/venues');
+const artistsRouter = require('./routes/artists');
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 app.use(cookieParser());
 app.use(
   session({
@@ -52,6 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/venues', venuesRouter);
+app.use('/artists', artistsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

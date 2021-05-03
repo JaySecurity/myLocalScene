@@ -7,9 +7,8 @@
       <li>Contact: <%= `${venue.contact.name}    Phone: ${venue.contact.phone}    Email: ${venue.contact.email}`%></li>
       <li><a href="<%=venue.website%>"><%=venue.website%></a></li>
     </ul>
-    <% console.log(venue)%>
     <% if(currentUser == venue.createdBy){%>
-      <a href="/venue/<%= venue._id %>/edit">Edit</a>
+      <a href="/venues/<%= venue._id %>/edit">Edit</a>
     <% } %>
   </div>
   <div class="content-wrapper">
@@ -24,7 +23,12 @@
       <%  })
       } %>
       </div>
-      <a href="/venues/<%= venue._id%>/review">Add Review</a>
+      <% if(currentUser) {%>
+        <a href="/venues/<%= venue._id%>/review">Add Review</a>
+      <% } else{ %>
+        <a href="/users/login">Login to Review</a>
+      <% } %>
+
     </div>
   </div>
 </div>
