@@ -1,22 +1,30 @@
 <div class="card">
-  <div class="card-header"><h1>Mind Bomb</h1> 
+  <div class="card-header"><h1><%=venue.name%></h1> 
   </div>
   <div class="details">
     <ul>
-      <li>Location:67 Queen St. St. Catharines, On</li>
-      <li>Contact: 905-688-3333 info@mindbomb.com</li>
-      <li><a href="#">http://mindbomb.com</a></li>
+      <li>Location: <%= venue.location %></li>
+      <li>Contact: <%= `${venue.contact.name}    Phone: ${venue.contact.phone}    Email: ${venue.contact.email}`%></li>
+      <li><a href="<%=venue.website%>"><%=venue.website%></a></li>
     </ul>
+    <% console.log(venue)%>
+    <% if(currentUser == venue.createdBy){%>
+      <a href="/venue/<%= venue._id %>/edit">Edit</a>
+    <% } %>
   </div>
   <div class="content-wrapper">
-    <div class="image"><img src="/images/missing.png" alt="Photo Not Found"></div>
+    <div class="image"><img src="<%= venue.photo ? venue.photo : '/images/missing.png'%>" alt="Venue Photo"></div>
     <div class="content">
-      <p>Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.</p>
+      <p><%= venue.description %></p>
       <div class="reviews">
       <h2>Reviews:</h2>
-      <!-- Loop reviews  -->
-      <%- include('./reviewCard') %>
+      <% if(venue.reviews.length > 0){
+        venue.reviews.forEach(review => { %>
+          <%- include('../partials/reviewCard.ejs', {review}) %>
+      <%  })
+      } %>
       </div>
+      <a href="/venues/<%= venue._id%>/review">Add Review</a>
     </div>
   </div>
 </div>
