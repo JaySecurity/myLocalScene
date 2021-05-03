@@ -1,3 +1,13 @@
 <%- include('./partials/head.ejs') %>
-<h1>Index</h1>
-<%- include('./partials/foot.ejs') %>
+<form>
+  <input type="text" name="search" id="search" />
+  <select name="category" id="category">
+    <option value="events" selected>Events</option>
+    <option value="venues">Venues</option>
+    <option value="artists">Artists</option>
+  </select>
+  <button id="search-btn">Search</button>
+</form>
+<%- include('./partials/eventCard.ejs') %>
+<script src="/javascripts/index.js"></script>
+<%- include('./partials/foot.ejs')%>
