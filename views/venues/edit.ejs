@@ -1,0 +1,56 @@
+<%- include('../partials/head.ejs') %>
+
+<h1 class="user-form-header">Edit Venue</h1>
+
+<% if(typeof message == undefined){ %>
+  <div class="msg"><p id="user-msg"><%= message ? message : null %></p></div>
+<% } %>
+
+<form action="/venues/<%= venue._id %>" method="post">
+  <div class="form-group">
+    <label for="name">Venue Name:</label>
+    <input type="text" name="name" id="name"  required value ="<%= venue.name %>"/>
+  </div>
+  <div class="form-group">
+    <label for="location">Location:</label>
+    <input type="text" name="location" id="location" required value ="<%= venue.location %>"/>
+  </div>
+  <div class="form-group">
+    <label>Contact Info:</label>
+    <input
+      class="contact-input"
+      type="text"
+      name="contact.name"
+      id="contact.name"
+      placeholder="Contact Name"value ="<%= venue.contact?.name %>"
+    />
+    <input
+      class="contact-input"
+      type="text"
+      name="contact.phone"
+      id="contact.phone"
+      placeholder="Contact Phone"value ="<%= venue.contact.phone %>"
+    />
+    <input
+      class="contact-input"
+      type="text"
+      name="contact.email"
+      id="contact.email"
+      placeholder="Contact Email"value ="<%= venue.contact.email %>"
+    />
+  </div>
+  <div class="form-group">
+    <label for="website">Website:</label>
+    <input type="text" name="website" id="website" value ="<%= venue.website %>"/>
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" cols="30" rows="5"><%= venue.description %></textarea>
+  </div>
+  <div class="form-group">
+    <label for="photo">Photo Link:</label>
+    <input type="text" name="photo" id="photo" value ="<%= venue.photo %>"/>
+  </div>
+  <button type="submit">Update Venue</button>
+</form>
+<%- include('../partials/foot.ejs') %>

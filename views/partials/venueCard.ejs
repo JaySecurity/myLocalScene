@@ -14,7 +14,7 @@
   <div class="content-wrapper">
     <div class="image"><img src="<%= venue.photo ? venue.photo : '/images/missing.png'%>" alt="Venue Photo"></div>
     <div class="content">
-      <p><%= venue.description %></p>
+      <p><pre><%= venue.description %></pre></p>
       <div class="reviews">
       <h2>Reviews:</h2>
       <% if(venue.reviews.length > 0){

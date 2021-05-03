@@ -24,4 +24,24 @@ async function create(req, res) {
   }
 }
 
-module.exports = { all, add, create };
+async function edit(req, res) {
+  const venue = await Venue.findById(req.params.id);
+  if (!venue) {
+    req.session.message = 'Venue Not Found';
+    res.render('venues/edit', { title: 'Edit Venue' });
+    req.session.message = '';
+  } else {
+    res.render('venues/edit', { title: 'Edit Venue', venue });
+  }
+}
+
+async function update(req, res) {
+  try {
+    await Venue.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/venues');
+  } catch (err) {
+    res.status(500).send('Something Went Wrong');
+  }
+}
+
+module.exports = { all, add, create, edit, update };
