@@ -1,10 +1,16 @@
 <div class="card">
   <div class="review-card-header">
-    <h3>JaySecurity </h3> 
+    <h3><%= review.createdBy.username %> </h3> 
     <div class="rating">
+      <% for(let i = 0; i< review.rating; i++){ %>
+        <img src="/images/star.png" alt="Star">
+      <% } %>
     </div>
   </div>
   <div class="content">
-    <p>Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.</p>
+    <p><pre><%= review.content %> </pre></p>
   </div>
+  <% if(currentUser == review.createdBy._id){%>
+    <a href="/artists/reviews/<%= review._id %>/edit">Edit</a>
+  <% } %>
 </div>

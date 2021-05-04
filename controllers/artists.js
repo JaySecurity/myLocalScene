@@ -1,7 +1,9 @@
 const Artist = require('../models/Artist');
 
 async function all(req, res) {
-  const artists = await Artist.find({});
+  const artists = await Artist.find({})
+    .populate('reviews.createdBy', 'username')
+    .exec();
   res.render('artists/index', { title: 'Artists', artists });
 }
 
