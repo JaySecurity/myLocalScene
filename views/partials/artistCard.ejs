@@ -24,7 +24,7 @@
         } %>
         </div>
         <% if(currentUser) { %>
-          <a href="/artists/<%= artist._id %>/review">Add Review</a>
+          <a href="/artists/<%= artist._id %>/reviews/new">Add Review</a>
         <% } else{ %>
           <a href="/users/login">Login to Review</a>
         <% } %>
