@@ -19,12 +19,12 @@
       <h2>Reviews:</h2>
       <% if(venue.reviews.length > 0){
         venue.reviews.forEach(review => { %>
-          <%- include('../partials/reviewCard.ejs', {review}) %>
+          <%- include('../partials/reviewCard.ejs', {review, path: 'venues'}) %>
       <%  })
       } %>
       </div>
       <% if(currentUser) {%>
-        <a href="/venues/<%= venue._id%>/review">Add Review</a>
+        <a href="/venues/<%= venue._id%>/reviews/new">Add Review</a>
       <% } else{ %>
         <a href="/users/login">Login to Review</a>
       <% } %>

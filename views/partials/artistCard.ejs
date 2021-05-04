@@ -19,7 +19,7 @@
         <h2>Reviews:</h2>
         <% if(artist.reviews.length > 0){
           artist.reviews.forEach(review => { %>
-            <%- include('../partials/reviewCard.ejs', {review}) %>
+            <%- include('../partials/reviewCard.ejs', {review, path: 'artists'}) %>
         <%  })
         } %>
         </div>

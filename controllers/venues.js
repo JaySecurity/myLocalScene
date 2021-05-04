@@ -1,7 +1,9 @@
 const Venue = require('../models/Venue');
 
 async function all(req, res) {
-  const venues = await Venue.find({});
+  const venues = await Venue.find({})
+    .populate('reviews.createdBy', 'username')
+    .exec();
   res.render('venues/index', { title: 'Venues', venues });
 }
 
