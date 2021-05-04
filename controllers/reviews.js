@@ -22,4 +22,31 @@ async function artistCreate(req, res) {
   }
 }
 
-module.exports = { artistAdd, artistCreate };
+async function artistEdit(req, res) {
+  try {
+    const artist = await Artist.findOne({ 'reviews._id': req.params.id });
+    const review = artist.reviews.id(req.params.id);
+    res.render('reviews/edit', {
+      title: 'Edit Review',
+      artistId: artist._id,
+      review,
+    });
+  } catch (err) {
+    res.status(500).send('Something went Wrong!');
+  }
+}
+
+async function artistUpdate(req, res) {
+  try {
+    const artist = await Artist.findById(req.params.aId);
+    const review = artist.reviews.id(req.params.rId);
+    review.rating = req.body.rating;
+    review.content = req.body.content;
+    await artist.save();
+    res.redirect('/artists');
+  } catch (err) {
+    res.status(500).send('Something went Wrong!!');
+  }
+}
+
+module.exports = { artistAdd, artistCreate, artistEdit, artistUpdate };
