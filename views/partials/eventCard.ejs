@@ -1,21 +1,22 @@
 <div class="card">
-  <div class="card-header"><h1>Unplugged @ <a href="#">Mind Bomb</a></h1> 
+  <div class="card-header"><h1><%=event.name %> @ <a href="#"><%=event.venue.name %></a></h1> 
   </div>
   <div class="details">
     <ul>
-      <li>Location:67 Queen St. St. Catharines, On</li>
-      <li>Date: 05-05-21 Doors @ 8PM</li>
-      <li>Cover: $5.00</li>
+      <li>Location: <%=event.venue.location %></li>
+      <li>Date: <%=event.dateTime.toLocaleDateString()%> Doors @ <%=event.dateTime.toLocaleTimeString([],{ hour: 'numeric', minute: '2-digit' }) %></li>
+      <li>Cover: <%=event.coverCharge %></li>
     </ul>
   </div>
   <div class="content-wrapper">
-    <div class="image"><img src="/images/missing.png" alt="Photo Not Found"></div>
+    <div class="image"><img src="<%= event.poster ? event.poster : '/images/missing.png'%>" alt="Photo Not Found"></div>
     <div class="content">
-      <p>Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.Come enjoy an evening of acoustic performances by local musicians.</p>
+      <p><pre><%= event.description %></pre></p>
       <h2>Artists:</h2>
       <ul>
-        <li>Artist 1</li>
-        <li>Artist 1</li>
+        <% event.artists.forEach(artist => { %>
+          <li><%= artist.name %></li>
+        <% }) %>
       </ul>
     </div>
   </div>
