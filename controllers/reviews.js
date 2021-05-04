@@ -49,4 +49,21 @@ async function artistUpdate(req, res) {
   }
 }
 
-module.exports = { artistAdd, artistCreate, artistEdit, artistUpdate };
+async function artistDelete(req, res) {
+  try {
+    const artist = await Artist.findOne({ 'reviews._id': req.params.id });
+    artist.reviews.id(req.params.id).remove();
+    await artist.save();
+    res.redirect('/artists');
+  } catch (err) {
+    res.status(500).send('Something went Wrong!!');
+  }
+}
+
+module.exports = {
+  artistAdd,
+  artistCreate,
+  artistEdit,
+  artistUpdate,
+  artistDelete,
+};

@@ -12,5 +12,6 @@
   </div>
   <% if(currentUser == review.createdBy._id){%>
     <a href="/artists/reviews/<%= review._id %>/edit">Edit</a>
+    <a href="/artists/reviews/<%= review._id %>?_method=DELETE">Delete Review</a>
   <% } %>
 </div>
