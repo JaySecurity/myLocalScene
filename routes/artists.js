@@ -7,6 +7,6 @@ router.get('/add', artistsCtrl.add);
 router.get('/:id/edit', artistsCtrl.edit);
 
 router.post('/', artistsCtrl.create);
-router.post('/:id', artistsCtrl.update);
+router.put('/:id', artistsCtrl.update);
 
 module.exports = router;

@@ -2,7 +2,7 @@
 
 <h1 class="user-form-header">Edit Artist</h1>
 
-<form action="/artists/<%=artist._id %>" method="post">
+<form action="/artists/<%=artist._id %>/?_method=PUT" method="post">
   <div class="form-group">
     <label for="name">Artist Name:</label>
     <input type="text" name="name" id="name" required value="<%= artist.name %>"/>

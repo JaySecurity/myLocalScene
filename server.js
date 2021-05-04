@@ -5,6 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const methodOverride = require('method-override');
 
 const sassMiddleware = require('node-sass-middleware');
 
@@ -51,6 +52,7 @@ app.use(
     sourceMap: true,
   })
 );
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

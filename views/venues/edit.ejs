@@ -6,7 +6,7 @@
   <div class="msg"><p id="user-msg"><%= message ? message : null %></p></div>
 <% } %>
 
-<form action="/venues/<%= venue._id %>" method="post">
+<form action="/venues/<%= venue._id %>/?_method=PUT" method="post">
   <div class="form-group">
     <label for="name">Venue Name:</label>
     <input type="text" name="name" id="name"  required value ="<%= venue.name %>"/>
