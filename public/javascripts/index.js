@@ -8,8 +8,6 @@ searchBtn.addEventListener('click', async (e) => {
   let searchValue = searchInput.value;
   let searchCategory = category.value;
   let searchUrl = `${BASE_URL}${searchCategory}?search=${searchValue}`;
-  console.log(searchUrl);
   let result = await fetch(searchUrl);
-  console.log(result);
   result.redirect.follow();
 });

@@ -33,7 +33,8 @@ async function login(req, res) {
       return res.redirect('/users/login');
     }
     req.session.user = user._id;
-    return res.redirect('/');
+    let redirectURL = req.session.history[req.session.history.length - 2];
+    return res.redirect(redirectURL);
   } catch (err) {
     console.log(err);
   }

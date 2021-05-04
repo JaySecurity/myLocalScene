@@ -10,7 +10,6 @@ function handleAdd(e) {
   if (artistSelect.value === 'none') return;
   artistIds.push(artistSelect.value);
   artists.push(artistSelect.selectedOptions[0].textContent);
-  console.log(artistSelect.selectedOptions[0].textContent);
   let html = artists.reduce(
     (html, artist) => `<li> ${artist} </li>` + html,
     ''

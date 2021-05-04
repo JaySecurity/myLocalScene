@@ -19,7 +19,6 @@
         <h2>Reviews:</h2>
         <% if(artist.reviews.length > 0){
           artist.reviews.forEach(review => { %>
-            <% console.log(review) %>
             <%- include('../partials/reviewCard.ejs', {review}) %>
         <%  })
         } %>

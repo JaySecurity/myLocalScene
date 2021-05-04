@@ -8,6 +8,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 
 const sassMiddleware = require('node-sass-middleware');
+const history = require('./middleware/history');
 
 require('dotenv').config({ path: path.join(__dirname, 'config/.env') });
 require('./config/db');
@@ -57,11 +58,11 @@ app.use(methodOverride('_method', { methods: ['POST', 'GET'] }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/venues', venuesRouter);
-app.use('/artists', artistsRouter);
-app.use('/events', eventsRouter);
-app.use('/', reviewsRouter);
+app.use('/users', history, usersRouter);
+app.use('/venues', history, venuesRouter);
+app.use('/artists', history, artistsRouter);
+app.use('/events', history, eventsRouter);
+app.use('/', history, reviewsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
