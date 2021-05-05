@@ -14,7 +14,7 @@
   <div class="content-wrapper">
     <div class="image"><img src="<%= artist.photo ? artist.photo : '/images/missing.png' %>" alt="Artist Photo"></div>
     <div class="content">
-      <p><pre><%= artist.description %></pre></p>
+      <p><%= artist.description %></p>
       <div class="reviews">
         <h2>Reviews:</h2>
         <% if(artist.reviews.length > 0){

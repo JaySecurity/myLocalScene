@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="content">
-    <p><pre><%= review.content %> </pre></p>
+    <p><%= review.content %> </p>
   </div>
   <% if(currentUser == review.createdBy._id){%>
     <a href="/<%= path %>/reviews/<%= review._id %>/edit">Edit</a>

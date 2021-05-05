@@ -11,7 +11,7 @@
   <div class="content-wrapper">
     <div class="image"><img src="<%= event.poster ? event.poster : '/images/missing.png'%>" alt="Photo Not Found"></div>
     <div class="content">
-      <p><pre><%= event.description %></pre></p>
+      <p><%= event.description %></p>
       <h2>Artists:</h2>
       <ul>
         <% event.artists.forEach(artist => { %>
