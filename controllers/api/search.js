@@ -25,8 +25,11 @@ async function events(req, res) {
   try {
     let search = new RegExp(req.query.search, 'i');
     const events = await Event.find({})
-      .populate('venue')
-      .where('name', search)
+      .populate('venue artists')
+      .or([{ name: search }, { description: search }])
+      .where('dateTime')
+      .gte(Date.now())
+      .sort('dateTime')
       .exec();
     res.status(200).json(events);
   } catch (err) {

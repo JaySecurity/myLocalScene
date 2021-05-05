@@ -9,6 +9,5 @@ searchBtn.addEventListener('click', async (e) => {
   let searchCategory = category.value;
   let searchUrl = `${BASE_URL}${searchCategory}?search=${searchValue}`;
   let result = await fetch(searchUrl);
-  // result = await result.text();
   console.log(await result.json());
 });
