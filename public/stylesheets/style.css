@@ -56,6 +56,8 @@ form {
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6); }
   .card .card-header {
+    display: flex;
+    justify-content: space-between;
     background-color: #5da9e9;
     padding: 10px;
     border-top-left-radius: 8px;

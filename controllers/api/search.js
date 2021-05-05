@@ -25,7 +25,7 @@ async function events(req, res) {
   try {
     let search = new RegExp(req.query.search, 'i');
     const events = await Event.find({})
-      .populate('venue artists')
+      .populate('venue')
       .or([{ name: search }, { description: search }])
       .where('dateTime')
       .gte(Date.now())
