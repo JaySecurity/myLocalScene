@@ -77,6 +77,7 @@ form {
     max-height: 250px;
     margin: 10px; }
   .card .content {
+    min-width: 350px;
     max-width: 450px; }
     .card .content ul {
       padding: 0; }

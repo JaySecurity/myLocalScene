@@ -1,0 +1,70 @@
+<%- include('../partials/head.ejs') %>
+
+<h1 class="user-form-header">Edit Event</h1>
+
+<form class="event-form" action="/events/<%=event._id%>?_method=PUT" method="post">
+  <div class="form-group">
+    <label for="name">Event Name:</label>
+    <input type="text" name="name" id="name" required value="<%= event.name %>"/>
+  </div>
+  <div class="form-group form-section">
+    <select name="venue" id="venue">
+      <% venues.forEach(venue => {%>
+        <option value="<%= venue._id %>"
+          <%= venue._id.toString() == event.venue._id.toString() ? 'selected' : '' %>
+          >
+          <%= venue.name %>           
+        </option>
+      <% }) %>      
+    </select>
+    <%   // format date for input value  
+    let year = event.dateTime.getFullYear();
+    let month = parseInt(event.dateTime.getMonth()) + 1
+    month = month.toString().padStart(2,'0');
+    let day = event.dateTime.getDate()
+    day = day.toString().padStart(2,'0');
+    let hour = event.dateTime.getHours()
+    hour = hour.toString().padStart(2,'0');
+    let min = event.dateTime.getMinutes()
+    min = min.toString().padStart(2,'0');
+    let dateString = `${year}-${month}-${day}T${hour}:${min}`  ;
+    console.log(dateString)
+    %> 
+    <input type="datetime-local" name="dateTime" id="dateTime" value="<%= dateString %>">
+    <input type="text" name="coverCharge" id="coverCharge" placeholder="Cover Charge" value="<%= event.coverCharge%>">
+  </div>
+  <div class="form-section">
+    <div class="form-group artist">
+      <select name="artist-select" id="artist-select">
+        <option value="none" selected disabled hidden>Select an Artist</option>
+        <% artists.forEach(artist => {%>
+          <option class="opts" value="<%= artist._id %>"><%= artist.name %> </option>
+        <% }) %>      
+      </select>
+      <button id="add-artist">Add Artist</button>
+      <h3>Artist</h3>
+      <ul id="artist-list">
+        <% let artistIds = []; 
+          event.artists.forEach(artist =>{ %> 
+          <li class="artist-li"><span class="del-btn" id="<%= artist._id %>">X &nbsp;&nbsp;</span><%= artist.name %></li>
+        <% 
+          artistIds.push(artist._id);
+        });
+        let artistIdString = JSON.stringify(artistIds);
+        %>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea name="description" id="description" cols="30" rows="5"><%= event.description %></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="poster">Poster Link:</label>
+    <input type="text" name="poster" id="poster" value="<%=event.poster%>"/>
+  </div>
+  <input type="hidden" name="artists" id="artists" value="<%=artistIdString%>">
+  <button type="submit">Update Event</button>
+</form>
+<script src='/javascripts/event.js'></script>
+<%- include('../partials/foot.ejs') %>

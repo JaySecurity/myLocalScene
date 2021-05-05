@@ -4,9 +4,9 @@ const eventsCtrl = require('../controllers/events');
 
 router.get('/', eventsCtrl.all);
 router.get('/add', eventsCtrl.add);
-// router.get('/:id/edit', artistsCtrl.edit);
+router.get('/:id/edit', eventsCtrl.edit);
 
 router.post('/', eventsCtrl.create);
-// router.put('/:id', artistsCtrl.update);
+router.put('/:id', eventsCtrl.update);
 
 module.exports = router;

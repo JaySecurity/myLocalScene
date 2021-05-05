@@ -19,5 +19,8 @@
         <% }) %>
       </ul>
     </div>
+    <% if(currentUser == event.createdBy){%>
+      <a href="/events/<%= event._id %>/edit">Edit</a>
+    <% } %>
   </div>
 </div>
