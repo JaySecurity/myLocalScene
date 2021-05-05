@@ -3,7 +3,12 @@ const Venue = require('../models/Venue');
 const Artist = require('../models/Artist');
 
 async function all(req, res) {
-  const events = await Event.find({}).populate('venue artists');
+  const events = await Event.find({})
+    .populate('venue artists')
+    .where('dateTime')
+    .gte(Date.now())
+    .sort('dateTime')
+    .exec();
   res.render('events/index', { title: 'Events', events });
 }
 

@@ -58,6 +58,7 @@ form {
   .card .card-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #5da9e9;
     padding: 10px;
     border-top-left-radius: 8px;
