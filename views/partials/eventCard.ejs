@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header"><h1><%=event.name %> @ <a href="#"><%=event.venue.name %></a></h1> 
+  <div class="card-header"><h1><%=event.name %> @ <a href="/venues/<%= event.venue._id%> "><%=event.venue.name %></a></h1> 
   </div>
   <div class="details">
     <ul>
@@ -15,7 +15,7 @@
       <h2>Artists:</h2>
       <ul>
         <% event.artists.forEach(artist => { %>
-          <li><%= artist.name %></li>
+          <li><a href="/artists/<%= artist._id%>"><%= artist.name %></a></li>
         <% }) %>
       </ul>
     </div>
