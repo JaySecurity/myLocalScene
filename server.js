@@ -19,6 +19,7 @@ const venuesRouter = require('./routes/venues');
 const artistsRouter = require('./routes/artists');
 const eventsRouter = require('./routes/events');
 const reviewsRouter = require('./routes/reviews');
+const searchRouter = require('./routes/api/search');
 
 const app = express();
 
@@ -62,6 +63,7 @@ app.use('/users', history, usersRouter);
 app.use('/venues', history, venuesRouter);
 app.use('/artists', history, artistsRouter);
 app.use('/events', history, eventsRouter);
+app.use('/api', history, searchRouter);
 app.use('/', history, reviewsRouter);
 
 // catch 404 and forward to error handler
