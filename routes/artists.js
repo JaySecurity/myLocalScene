@@ -9,5 +9,6 @@ router.get('/:id', artistsCtrl.show);
 
 router.post('/', artistsCtrl.create);
 router.put('/:id', artistsCtrl.update);
+router.delete('/:id', artistsCtrl.delete);
 
 module.exports = router;

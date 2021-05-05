@@ -1,5 +1,11 @@
 <div class="card">
-  <div class="card-header"><h1><%=event.name %> @ <a href="/venues/<%= event.venue._id%> "><%=event.venue.name %></a></h1> 
+  <div class="card-header"><h1><%=event.name %> @ <a href="/venues/<%= event.venue._id%> "><%=event.venue.name %></a></h1>
+    <% if(currentUser == event.createdBy){%>
+      <div>
+      <a href="/events/<%= event._id %>/edit">Edit</a>
+      <a href="/events/<%= event._id %>?_method=DELETE">Delete</a>
+    </div>
+    <% } %> 
   </div>
   <div class="details">
     <ul>
@@ -19,8 +25,5 @@
         <% }) %>
       </ul>
     </div>
-    <% if(currentUser == event.createdBy){%>
-      <a href="/events/<%= event._id %>/edit">Edit</a>
-    <% } %>
   </div>
 </div>

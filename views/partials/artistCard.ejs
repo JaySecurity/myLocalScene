@@ -1,16 +1,19 @@
 <div class="card">
   <div class="card-header">
     <h1><%= artist.name %></h1> 
+    <% if(currentUser == artist.createdBy){%>
+      <div>
+      <a href="/artists/<%= artist._id %>/edit">Edit</a>
+      <a href="/artists/<%= artist._id %>?_method=DELETE">Delete</a>
+    </div>
+    <% } %>
   </div>
   <div class="details">
     <ul>
       <li>Category: <%= artist.category %></li>
       <li>Genre: <%= artist.genre %></li>
       <li><a href="<%= artist.website %>" target="_blank"><%= artist.website %></a></li>
-    </ul>
-    <% if(currentUser == artist.createdBy){%>
-      <a href="/artists/<%= artist._id %>/edit">Edit</a>
-    <% } %>
+    </ul>    
   </div>
   <div class="content-wrapper">
     <div class="image"><img src="<%= artist.photo ? artist.photo : '/images/missing.png' %>" alt="Artist Photo"></div>

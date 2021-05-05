@@ -55,4 +55,13 @@ async function update(req, res) {
   }
 }
 
-module.exports = { all, add, create, edit, update, show };
+async function deleteOne(req, res) {
+  try {
+    await Artist.findByIdAndDelete(req.params.id);
+    res.redirect('/artists');
+  } catch (err) {
+    res.status(500).send('Something went Wrong');
+  }
+}
+
+module.exports = { all, add, create, edit, update, show, delete: deleteOne };

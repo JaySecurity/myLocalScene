@@ -42,6 +42,7 @@ function handleDelete(e) {
   artists = artists.filter((a) => a !== newOption.textContent);
   artistSelect.appendChild(newOption);
   e.target.parentNode.remove();
+  artistsInput.value = JSON.stringify(artistIds);
 }
 
 addArtistBtn.addEventListener('click', handleAdd);

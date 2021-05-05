@@ -9,5 +9,6 @@ router.get('/:id/', venuesCtrl.show);
 
 router.post('/', venuesCtrl.create);
 router.put('/:id', venuesCtrl.update);
+router.delete('/:id', venuesCtrl.delete);
 
 module.exports = router;

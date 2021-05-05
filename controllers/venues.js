@@ -55,4 +55,12 @@ async function update(req, res) {
   }
 }
 
-module.exports = { all, add, create, edit, update, show };
+async function deleteOne(req, res) {
+  try {
+    await Venue.findByIdAndDelete(req.params.id);
+    res.redirect('/venues');
+  } catch (err) {
+    res.status(500).send('Something went Wrong!');
+  }
+}
+module.exports = { all, add, create, edit, update, show, delete: deleteOne };

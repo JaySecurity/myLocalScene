@@ -79,4 +79,13 @@ async function update(req, res) {
   }
 }
 
-module.exports = { all, add, create, edit, update, show };
+async function deleteOne(req, res) {
+  try {
+    await Event.findByIdAndDelete(req.params.id);
+    res.redirect('/events');
+  } catch (err) {
+    res.status(500).send('Something went Wrong');
+  }
+}
+
+module.exports = { all, add, create, edit, update, show, delete: deleteOne };
