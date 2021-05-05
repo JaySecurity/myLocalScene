@@ -24,7 +24,10 @@ async function artists(req, res) {
 async function events(req, res) {
   try {
     let search = new RegExp(req.query.search, 'i');
-    const events = await Event.find({}).where('name', search);
+    const events = await Event.find({})
+      .populate('venue')
+      .where('name', search)
+      .exec();
     res.status(200).json(events);
   } catch (err) {
     res.status(500).json({ msg: 'Something went Wrong!' });

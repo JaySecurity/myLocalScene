@@ -39,9 +39,7 @@ async function edit(req, res) {
     const artists = await Artist.find({ _id: { $nin: event.artists } }).sort(
       'name'
     );
-    const venues = await Venue.find({ _id: { $nin: event.venue } }).sort(
-      'name'
-    );
+    const venues = await Venue.find({}).sort('name');
     res.render('events/edit', { title: 'Edit Event', event, artists, venues });
   } catch (err) {
     res.status(500).send('Something Went Wrong!');

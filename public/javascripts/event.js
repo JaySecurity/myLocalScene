@@ -1,8 +1,8 @@
 const addArtistBtn = document.getElementById('add-artist');
 const artistSelect = document.getElementById('artist-select');
 const artistList = document.getElementById('artist-list');
-const artistIds = [];
-const artists = [];
+let artistIds = [];
+let artists = [];
 const artistsInput = document.getElementById('artists');
 
 if (artistsInput.value) {
@@ -37,7 +37,9 @@ function handleDelete(e) {
   const newOption = document.createElement('option');
   newOption.classList.add('opts');
   newOption.value = e.target.id;
+  artistIds = artistIds.filter((id) => id !== newOption.value);
   newOption.textContent = e.target.parentNode.textContent.slice(4);
+  artists = artists.filter((a) => a !== newOption.textContent);
   artistSelect.appendChild(newOption);
   e.target.parentNode.remove();
 }
