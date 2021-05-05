@@ -15,6 +15,15 @@ function add(req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const artist = await Artist.findById(req.params.id);
+    res.render('artists/show', { title: 'Artist View', artist });
+  } catch (err) {
+    res.status(500).send('Something went Wrong!');
+  }
+}
+
 async function create(req, res) {
   try {
     const newArtist = await new Artist(req.body);
@@ -46,4 +55,4 @@ async function update(req, res) {
   }
 }
 
-module.exports = { all, add, create, edit, update };
+module.exports = { all, add, create, edit, update, show };

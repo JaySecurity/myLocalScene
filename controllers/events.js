@@ -12,6 +12,17 @@ async function all(req, res) {
   res.render('events/index', { title: 'Events', events });
 }
 
+async function show(req, res) {
+  try {
+    const event = await Event.findById(req.params.id)
+      .populate('venue artists')
+      .exec();
+    res.render('events/show', { title: 'Event View', event });
+  } catch (err) {
+    res.status(500).send('Something went Wrong!');
+  }
+}
+
 async function add(req, res) {
   try {
     const artists = await Artist.find({}).sort('name');
@@ -68,4 +79,4 @@ async function update(req, res) {
   }
 }
 
-module.exports = { all, add, create, edit, update };
+module.exports = { all, add, create, edit, update, show };

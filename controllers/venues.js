@@ -15,6 +15,15 @@ function add(req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const venue = await Venue.findById(req.params.id);
+    res.render('venues/show', { title: 'Venue', venue });
+  } catch (err) {
+    res.status(500).send('Something went Wrong!');
+  }
+}
+
 async function create(req, res) {
   try {
     const newVenue = await new Venue(req.body);
@@ -46,4 +55,4 @@ async function update(req, res) {
   }
 }
 
-module.exports = { all, add, create, edit, update };
+module.exports = { all, add, create, edit, update, show };
