@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Event = require('./Event');
 
 const reviewSchema = require('./review');
 
@@ -30,5 +31,10 @@ const venueSchema = Schema({
     required: true,
   },
 });
+
+// venueSchema.pre('remove', async (next) => {
+//   await Event.deleteMany({ venue: this._id });
+//   next();
+// });
 
 module.exports = mongoose.model('Venue', venueSchema);

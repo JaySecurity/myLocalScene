@@ -1,4 +1,5 @@
 const Venue = require('../models/Venue');
+const Event = require('../models/Event');
 
 async function all(req, res) {
   const venues = await Venue.find({})
@@ -57,6 +58,7 @@ async function update(req, res) {
 
 async function deleteOne(req, res) {
   try {
+    await Event.deleteMany({ venue: req.params.id });
     await Venue.findByIdAndDelete(req.params.id);
     res.redirect('/venues');
   } catch (err) {

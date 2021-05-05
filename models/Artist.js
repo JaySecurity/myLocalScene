@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Event = require('./Event');
 
 const reviewSchema = require('./review');
 
@@ -28,6 +29,15 @@ const artistSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
   },
+});
+
+artistSchema.pre('remove', async (next) => {
+  await Event.updateMany(
+    { artists: this._id },
+    { $pull: { artists: this._id } },
+    { multi: true }
+  ).exec();
+  next();
 });
 
 module.exports = mongoose.model('Artist', artistSchema);
