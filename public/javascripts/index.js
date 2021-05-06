@@ -20,7 +20,7 @@ searchBtn.addEventListener('click', async (e) => {
           <h1>${listing.name}  ${
         listing?.venue?.name ? ' @ ' + listing.venue.name : ''
       }</h1> 
-          <a class="more-btn" href="/${category.value}/${
+          <a class="more-btn btn" href="/${category.value}/${
         listing._id
       }">More Info</a> 
         </div>

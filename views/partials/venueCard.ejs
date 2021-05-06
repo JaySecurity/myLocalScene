@@ -2,8 +2,8 @@
   <div class="card-header"><h1><%=venue.name%></h1>
     <% if(currentUser == venue.createdBy){%>
       <div>
-        <a href="/venues/<%= venue._id %>/edit">Edit</a>
-        <a href="/venues/<%= venue._id %>?_method=DELETE">Delete</a>
+        <a class="btn" href="/venues/<%= venue._id %>/edit">Edit</a>
+        <a class="btn" href="/venues/<%= venue._id %>?_method=DELETE">Delete</a>
     </div>
     <% } %> 
   </div>
@@ -27,9 +27,9 @@
       } %>
       </div>
       <% if(currentUser) {%>
-        <a href="/venues/<%= venue._id%>/reviews/new">Add Review</a>
+        <a class="btn" href="/venues/<%= venue._id%>/reviews/new">Add Review</a>
       <% } else{ %>
-        <a href="/users/login">Login to Review</a>
+        <a class="btn" href="/users/login">Login to Review</a>
       <% } %>
     </div>
   </div>

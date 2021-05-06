@@ -1,5 +1,6 @@
 <%- include('./partials/head.ejs') %>
 <form>
+  <div class="inline-form-group">
   <input type="text" name="search" id="search" />
   <select name="category" id="category">
     <option value="events" selected>Events</option>
@@ -7,13 +8,14 @@
     <option value="artists">Artists</option>
   </select>
   <button id="search-btn">Search</button>
+</div>
 </form>
 <main id="main-content">
   <% results.forEach(listing =>{ %>
     <div class="card">
       <div class="card-header">
         <h1><%= listing.name %> <%= listing?.venue?.name ? ' @ ' + listing.venue.name : '' %></h1> 
-        <a class="more-btn" href="/events/<%= listing._id %>">More Info</a> 
+        <a class="more-btn btn" href="/events/<%= listing._id %>">More Info</a> 
       </div>
       <div class="content">
         <p><%= listing.description %></p>

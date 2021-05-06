@@ -3,8 +3,8 @@
     <h1><%= artist.name %></h1> 
     <% if(currentUser == artist.createdBy){%>
       <div>
-      <a href="/artists/<%= artist._id %>/edit">Edit</a>
-      <a href="/artists/<%= artist._id %>?_method=DELETE">Delete</a>
+      <a class="btn" href="/artists/<%= artist._id %>/edit">Edit</a>
+      <a class="btn" href="/artists/<%= artist._id %>?_method=DELETE">Delete</a>
     </div>
     <% } %>
   </div>
@@ -28,9 +28,9 @@
         } %>
         </div>
         <% if(currentUser) { %>
-          <a href="/artists/<%= artist._id %>/reviews/new">Add Review</a>
+          <a class="btn" href="/artists/<%= artist._id %>/reviews/new">Add Review</a>
         <% } else{ %>
-          <a href="/users/login">Login to Review</a>
+          <a class="btn" href="/users/login">Login to Review</a>
         <% } %>
       </div>
     </div>

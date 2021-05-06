@@ -19,14 +19,25 @@ nav {
     list-style: none;
     margin: 10px 20px; }
   nav a {
-    text-decoration: none;
-    padding: 0.5rem 0.75rem;
-    font-size: 1.8rem;
-    background-color: gray;
-    border-radius: 8px; }
+    text-decoration: none; }
   nav .logo {
     height: 60px;
     margin-left: 20px; }
+
+.nav-link {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: #003f91;
+  padding: 5px 10px;
+  color: #ffffff; }
+  .nav-link:hover {
+    background-color: #6d326d; }
+
+.controls {
+  display: inline-block; }
+  .controls ul {
+    margin: 0;
+    padding: 0; }
 
 .user-form-header {
   text-align: center; }
@@ -45,16 +56,38 @@ form {
   form .form-group {
     display: flex;
     flex-direction: column; }
-    form .form-group input {
-      display: block;
-      margin: 0.8rem 0; }
+  form .inline-form-group {
+    display: flex; }
+    form .inline-form-group input,
+    form .inline-form-group select,
+    form .inline-form-group button {
+      display: inline-block;
+      margin: 0 5px; }
+  form input,
+  form select,
+  form textarea,
+  form button {
+    display: block;
+    border: 1px solid #5da9e9;
+    border-radius: 5px;
+    margin-bottom: 0.75rem;
+    padding: 5px; }
 
 .card {
   max-width: 900px;
   margin: 30px auto;
+  padding-bottom: 10px;
   border: 2px solid rgba(54, 53, 53, 0.7);
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6); }
+  .card a.btn {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #003f91;
+    padding: 5px 10px;
+    color: #ffffff; }
+    .card a.btn:hover {
+      background-color: #6d326d; }
   .card .card-header {
     display: flex;
     justify-content: space-between;
@@ -63,6 +96,8 @@ form {
     padding: 10px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px; }
+    .card .card-header a {
+      color: white; }
   .card a {
     text-decoration: none; }
   .card ul {
@@ -94,6 +129,14 @@ form {
 
 .review-card-header {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: #6d326d;
+  color: white; }
+  .review-card-header img {
+    margin: 0; }
 
 /*# sourceMappingURL=style.css.map */

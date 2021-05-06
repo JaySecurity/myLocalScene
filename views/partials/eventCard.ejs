@@ -2,8 +2,8 @@
   <div class="card-header"><h1><%=event.name %> @ <a href="/venues/<%= event.venue._id%> "><%=event.venue.name %></a></h1>
     <% if(currentUser == event.createdBy){%>
       <div>
-      <a href="/events/<%= event._id %>/edit">Edit</a>
-      <a href="/events/<%= event._id %>?_method=DELETE">Delete</a>
+      <a class="btn" href="/events/<%= event._id %>/edit">Edit</a>
+      <a class="btn" href="/events/<%= event._id %>?_method=DELETE">Delete</a>
     </div>
     <% } %> 
   </div>

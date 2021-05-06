@@ -18,7 +18,9 @@ function add(req, res) {
 
 async function show(req, res) {
   try {
-    const artist = await Artist.findById(req.params.id);
+    const artist = await Artist.findById(req.params.id)
+      .populate('reviews.createdBy', 'username')
+      .exec();
     res.render('artists/show', { title: 'Artist View', artist });
   } catch (err) {
     res.status(500).send('Something went Wrong!');
