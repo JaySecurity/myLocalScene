@@ -29,6 +29,7 @@ myLocalScene is a site thats allows venues and artists to promote their events a
 [See it Live on Heroku](https://mylocalscene.herokuapp.com/)
 
 [Trello Board](https://trello.com/b/ry8MHMB2/to-do)
+
 [ERD](https://i.imgur.com/NyBDmtw.png)
 
 ## To-Do
