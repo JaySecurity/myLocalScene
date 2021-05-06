@@ -1,4 +1,5 @@
 const Artist = require('../models/Artist');
+const Event = require('../models/Event');
 
 async function all(req, res) {
   const artists = await Artist.find({})
@@ -57,10 +58,14 @@ async function update(req, res) {
 
 async function deleteOne(req, res) {
   try {
+    await Event.updateMany(
+      { artists: req.params.id },
+      { $pull: { artists: req.params.id } }
+    );
     await Artist.findByIdAndDelete(req.params.id);
     res.redirect('/artists');
   } catch (err) {
-    res.status(500).send('Something went Wrong');
+    res.status(500).send(err.message);
   }
 }
 
