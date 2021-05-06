@@ -9,7 +9,7 @@ if (artistsInput.value) {
   artistIds.push(...JSON.parse(artistsInput.value));
   const liELs = document.querySelectorAll('.artist-li');
   liELs.forEach((el) => {
-    artists.push(el.textContent.slice(4));
+    artists.push(el.textContent.slice(1));
   });
 }
 
@@ -19,7 +19,7 @@ function handleAdd(e) {
   artistIds.push(artistSelect.value);
   artists.push(artistSelect.selectedOptions[0].textContent);
   let html = artistList.innerHTML;
-  html += `<li class="artist-li"><span class="del-btn" id="${artistSelect.value}">X &nbsp;&nbsp;</span>${artistSelect.selectedOptions[0].textContent}</li>`;
+  html += `<li class="artist-li"><span class="del-btn" id="${artistSelect.value}">X</span>${artistSelect.selectedOptions[0].textContent}</li>`;
 
   let options = document.querySelectorAll('.opts');
   options.forEach((option) => {
@@ -38,7 +38,7 @@ function handleDelete(e) {
   newOption.classList.add('opts');
   newOption.value = e.target.id;
   artistIds = artistIds.filter((id) => id !== newOption.value);
-  newOption.textContent = e.target.parentNode.textContent.slice(4);
+  newOption.textContent = e.target.parentNode.textContent.slice(1);
   artists = artists.filter((a) => a !== newOption.textContent);
   artistSelect.appendChild(newOption);
   e.target.parentNode.remove();

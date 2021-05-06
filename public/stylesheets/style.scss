@@ -211,6 +211,22 @@ form {
   }
 }
 
+.artist-li {
+  list-style: none;
+  span {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: $primary-color;
+    padding: 2px;
+    margin-right: 5px;
+    color: #ffffff;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+}
+
 @media only screen and (max-width: 700px) {
   nav {
     justify-content: space-between;
