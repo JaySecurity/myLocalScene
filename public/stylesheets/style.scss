@@ -7,9 +7,14 @@ $secondary-color: #6d326d;
   margin: 0;
   padding: 0;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
+
+  h1 {
+    text-align: center;
+  }
 }
 
 nav {
@@ -135,6 +140,7 @@ form {
 
   a {
     text-decoration: none;
+    color: $header-background;
   }
   ul {
     padding: 10px 10px;
@@ -191,5 +197,26 @@ form {
 
   img {
     margin: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    justify-content: space-between;
+
+    li {
+      margin: 10px;
+    }
+    .logo {
+      margin-left: 10px;
+      height: 50px;
+    }
+  }
+
+  .card {
+    max-width: 90%;
+    .content-wrapper {
+      flex-direction: column;
+    }
   }
 }

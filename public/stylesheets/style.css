@@ -6,6 +6,8 @@
 .container {
   max-width: 1200px;
   margin: 0 auto; }
+  .container h1 {
+    text-align: center; }
 
 nav {
   padding: 10px;
@@ -99,7 +101,8 @@ form {
     .card .card-header a {
       color: white; }
   .card a {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #5da9e9; }
   .card ul {
     padding: 10px 10px; }
   .card li {
@@ -141,5 +144,18 @@ form {
   color: white; }
   .review-card-header img {
     margin: 0; }
+
+@media only screen and (max-width: 600px) {
+  nav {
+    justify-content: space-between; }
+    nav li {
+      margin: 10px; }
+    nav .logo {
+      margin-left: 10px;
+      height: 50px; }
+  .card {
+    max-width: 90%; }
+    .card .content-wrapper {
+      flex-direction: column; } }
 
 /*# sourceMappingURL=style.css.map */
