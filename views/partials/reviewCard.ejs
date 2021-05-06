@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card review-card">
   <div class="review-card-header">
     <h3><%= review.createdBy.username %> </h3> 
     <div class="rating">
@@ -11,7 +11,7 @@
     <p><%= review.content %> </p>
   </div>
   <% if(currentUser == review.createdBy._id){%>
-    <a href="/<%= path %>/reviews/<%= review._id %>/edit">Edit</a>
-    <a href="/<%= path %>/reviews/<%= review._id %>?_method=DELETE">Delete Review</a>
+    <a class="btn" href="/<%= path %>/reviews/<%= review._id %>?_method=DELETE">Delete Review</a>
+    <a class="btn" href="/<%= path %>/reviews/<%= review._id %>/edit">Edit</a>
   <% } %>
 </div>
