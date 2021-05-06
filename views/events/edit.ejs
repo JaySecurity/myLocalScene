@@ -46,7 +46,7 @@
       <ul id="artist-list">
         <% let artistIds = []; 
           event.artists.forEach(artist =>{ %> 
-          <li class="artist-li"><span class="del-btn" id="<%= artist._id %>">X &nbsp;&nbsp;</span><%= artist.name %></li>
+          <li class="artist-li"><span class="del-btn" id="<%= artist._id %>">X</span><%= artist.name %></li>
         <% 
           artistIds.push(artist._id);
         });

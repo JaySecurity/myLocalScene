@@ -213,11 +213,12 @@ form {
 
 .artist-li {
   list-style: none;
+  margin: 3px 0;
   span {
     border: 1px solid black;
     border-radius: 5px;
     background-color: $primary-color;
-    padding: 2px;
+    padding: 1px;
     margin-right: 5px;
     color: #ffffff;
     cursor: pointer;
