@@ -175,7 +175,9 @@ form {
 }
 
 .review-card {
-  padding: 0 10px 10px 10px;
+  .btn {
+    margin-left: 10px;
+  }
 }
 .review-card-header {
   display: flex;
