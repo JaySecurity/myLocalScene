@@ -55,10 +55,21 @@ nav {
 
 .controls {
   display: inline-block;
-
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 0px 20px;
+  position: relative;
   ul {
+    position: absolute;
+    right: 5%;
     margin: 0;
     padding: 0;
+  }
+  li {
+    list-style: none;
+  }
+  a {
+    text-decoration: none;
   }
 }
 
@@ -213,10 +224,37 @@ form {
     }
   }
 
+  form {
+    width: 95%;
+  }
   .card {
     max-width: 90%;
+
+    .user-ctrl {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      a.btn {
+        margin: 5px;
+      }
+    }
     .content-wrapper {
       flex-direction: column;
+    }
+    .content {
+      min-width: unset;
+      width: 100%;
+      a.btn {
+        margin-left: 10px;
+      }
+      .reviews {
+        width: 100%;
+        img {
+          max-width: 20px;
+        }
+      }
     }
   }
 }

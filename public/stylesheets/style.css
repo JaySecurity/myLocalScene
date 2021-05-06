@@ -36,10 +36,20 @@ nav {
     background-color: #6d326d; }
 
 .controls {
-  display: inline-block; }
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 0px 20px;
+  position: relative; }
   .controls ul {
+    position: absolute;
+    right: 5%;
     margin: 0;
     padding: 0; }
+  .controls li {
+    list-style: none; }
+  .controls a {
+    text-decoration: none; }
 
 .user-form-header {
   text-align: center; }
@@ -153,9 +163,27 @@ form {
     nav .logo {
       margin-left: 10px;
       height: 50px; }
+  form {
+    width: 95%; }
   .card {
     max-width: 90%; }
+    .card .user-ctrl {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between; }
+      .card .user-ctrl a.btn {
+        margin: 5px; }
     .card .content-wrapper {
-      flex-direction: column; } }
+      flex-direction: column; }
+    .card .content {
+      min-width: unset;
+      width: 100%; }
+      .card .content a.btn {
+        margin-left: 10px; }
+      .card .content .reviews {
+        width: 100%; }
+        .card .content .reviews img {
+          max-width: 20px; } }
 
 /*# sourceMappingURL=style.css.map */

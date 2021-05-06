@@ -2,7 +2,7 @@
   <div class="card-header">
     <h1><%= artist.name %></h1> 
     <% if(currentUser == artist.createdBy){%>
-      <div>
+      <div class="user-ctrl">
       <a class="btn" href="/artists/<%= artist._id %>/edit">Edit</a>
       <a class="btn" href="/artists/<%= artist._id %>?_method=DELETE">Delete</a>
     </div>
