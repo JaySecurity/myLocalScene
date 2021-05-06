@@ -145,7 +145,7 @@ form {
   .review-card-header img {
     margin: 0; }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   nav {
     justify-content: space-between; }
     nav li {
