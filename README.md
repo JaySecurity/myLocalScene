@@ -1,6 +1,6 @@
 #myLocalScene
 
-myLocalScene is a site thats allows venues and artists to promote their events and patrons to review them.
+myLocalScene is a site thats allows venues and artists to promote their events and patrons to review them. No more taping flyers to telephone poles!
 
 ## Screenshots
 
