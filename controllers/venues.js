@@ -60,8 +60,9 @@ async function update(req, res) {
 
 async function deleteOne(req, res) {
   try {
-    await Event.deleteMany({ venue: req.params.id });
-    await Venue.findByIdAndDelete(req.params.id);
+    // await Event.deleteMany({ venue: req.params.id });
+    let venue = await Venue.findById(req.params.id);
+    await venue.remove();
     res.redirect('/venues');
   } catch (err) {
     res.status(500).send('Something went Wrong!');

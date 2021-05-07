@@ -32,9 +32,10 @@ const venueSchema = Schema({
   },
 });
 
-// venueSchema.pre('remove', async (next) => {
-//   await Event.deleteMany({ venue: this._id });
-//   next();
-// });
+venueSchema.pre('remove', async function (next) {
+  console.log(this);
+  await Event.deleteMany({ venue: this._id });
+  next();
+});
 
 module.exports = mongoose.model('Venue', venueSchema);

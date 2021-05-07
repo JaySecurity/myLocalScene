@@ -60,11 +60,12 @@ async function update(req, res) {
 
 async function deleteOne(req, res) {
   try {
-    await Event.updateMany(
-      { artists: req.params.id },
-      { $pull: { artists: req.params.id } }
-    );
-    await Artist.findByIdAndDelete(req.params.id);
+    // await Event.updateMany(
+    //   { artists: req.params.id },
+    //   { $pull: { artists: req.params.id } }
+    // );
+    let artist = await Artist.findById(req.params.id);
+    artist.remove();
     res.redirect('/artists');
   } catch (err) {
     res.status(500).send(err.message);

@@ -31,7 +31,8 @@ const artistSchema = Schema({
   },
 });
 
-artistSchema.pre('remove', async (next) => {
+artistSchema.pre('remove', async function (next) {
+  console.log(this);
   await Event.updateMany(
     { artists: this._id },
     { $pull: { artists: this._id } },
