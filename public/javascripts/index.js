@@ -1,7 +1,7 @@
 const searchBtn = document.getElementById('search-btn');
 const searchInput = document.getElementById('search');
 const category = document.getElementById('category');
-const BASE_URL = 'http://localhost:3000/api/search/';
+const BASE_URL = 'api/search/';
 const mainEl = document.getElementById('main-content');
 
 searchBtn.addEventListener('click', async (e) => {
